@@ -1,4 +1,3 @@
-
 import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/auth-context";
 import React, { Suspense } from "react";
@@ -16,26 +15,17 @@ import ContactPage from "pages/ContactPage";
 const HomePage = React.lazy(() => import("pages/HomePage")); // Lazy-loaded
 const PageNotFound = React.lazy(() => import("pages/PageNotFound"));
 const PostDetailsPage = React.lazy(() => import("pages/PostDetailsPage"));
-const CategoryPage = React.lazy(() => import("pages/CategoryPage")); 
+const CategoryPage = React.lazy(() => import("pages/CategoryPage"));
 const SignInPage = React.lazy(() => import("pages/SignInPage"));
 const SignUpPage = React.lazy(() => import("pages/SignUpPage"));
 const DashboardPage = React.lazy(() => import("pages/DashboardPage"));
 const PageUser = React.lazy(() => import("pages/PageUser"));
 
-
 //modules
-const CategoryAddNew = React.lazy(() =>
-  import("module/category/CategoryAddNew")
-);
-const CategoryManage = React.lazy(() =>
-  import("module/category/CategoryManage")
-);
-const CategoryUpdate = React.lazy(() =>
-  import("module/category/CategoryUpdate")
-);
-const DashboardLayout = React.lazy(() =>
-  import("module/dashboard/DashboardLayout")
-);
+const CategoryAddNew = React.lazy(() => import("module/category/CategoryAddNew"));
+const CategoryManage = React.lazy(() => import("module/category/CategoryManage"));
+const CategoryUpdate = React.lazy(() => import("module/category/CategoryUpdate"));
+const DashboardLayout = React.lazy(() => import("module/dashboard/DashboardLayout"));
 const PostAddNew = React.lazy(() => import("module/post/PostAddNew"));
 const PostManage = React.lazy(() => import("module/post/PostManage"));
 const PostUpdate = React.lazy(() => import("module/post/PostUpdate"));
@@ -44,17 +34,13 @@ const UserManage = React.lazy(() => import("module/user/UserManage"));
 const UserProfile = React.lazy(() => import("module/user/UserProfile"));
 const UserUpdate = React.lazy(() => import("module/user/UserUpdate"));
 
-
-
-
-
 function App() {
   return (
     <div>
       <AuthProvider>
         <Suspense fallback={<h1>Loading profile...</h1>}>
           <Routes>
-            <Route path="/" element={<HomePage></HomePage>}></Route>
+            <Route path="/" index element={<HomePage></HomePage>}></Route>
             <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
             <Route path="/blog" element={<BlogPage></BlogPage>}></Route>
             <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
